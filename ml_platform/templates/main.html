@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Курс по Машинному обучению</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <script src="{{ url_for('static', filename='script.js') }}" defer></script>
+</head>
+<body>
+
+  <h1>Курс: Основы машинного обучения</h1>
+
+  <div class="module">
+    <button class="module-button" onclick="toggleTopics('topics1')">Модуль 1: Введение</button>
+    <ul id="topics1" class="topic-list">
+      <li>Что такое машинное обучение?</li>
+      <li>Области применения</li>
+      <li>Типы обучения</li>
+    </ul>
+  </div>
+
+  <div class="module">
+    <button class="module-button" onclick="toggleTopics('topics2')">Модуль 2: Работа с данными</button>
+    <ul id="topics2" class="topic-list">
+      <li>Предобработка данных</li>
+      <li>Нормализация и стандартизация</li>
+      <li>Разделение на выборки</li>
+    </ul>
+  </div>
+
+  <!-- Кнопка "Спросить у ИИ" -->
+  <div id="ask-button">Объясни! <span class="beta-tag">BETA</span></div>
+
+  <!-- Контейнер чата -->
+  <div class="chat-container">
+    <div id="chat-popup">
+
+      <!-- КОСМОКОТ ВНУТРИ ЧАТА -->
+      <div class="spacecat-wrapper">
+        <img src="{{ url_for('static', filename='cat.png') }}" alt="Космокот" class="spacecat" />
+      </div>
+
+      <div class="chat-header">
+        <strong>Космокот</strong>
+        <button id="close-chat">✕</button>
+      </div>
+
+      <!-- Переписка -->
+      <div class="chat-messages" id="chat-messages">
+        <!-- сообщения -->
+      </div>
+
+      <input id="chat-input" type="text" placeholder="Задай свой вопрос..." />
+      <button id="send-button" class="explain-button">Объясни иначе</button>
+    </div>
+  </div>
+
+</body>
+</html>
