@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Добро пожаловать</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <script src="{{ url_for('static', filename='welcome.js') }}" defer></script>
+
+</head>
+<body class="welcome-page">
+
+  <div class="course-box">
+    <h2>Программа курса</h2>
+    <div class="module-preview">
+      <div class="module-title">Модуль 1: Введение <span class="plus">+</span></div>
+      <div class="hidden-topics">Что такое ML<br>Типы обучения</div>
+      <div class="module-title">Модуль 2: Работа с данными <span class="plus">+</span></div>
+      <div class="hidden-topics">Нормализация<br>Выборки</div>
+    </div>
+  </div>
+
+  <div class="auth-box">
+    <div class="tabs">
+      <button class="tab active" onclick="showForm('register')">Регистрация</button>
+      <button class="tab" onclick="showForm('login')">Вход</button>
+    </div>
+    <form id="register-form">
+      <input type="text" placeholder="Email"><br>
+      <input type="text" placeholder="Логин"><br>
+      <input type="password" placeholder="Пароль"><br>
+      <label><input type="checkbox"> Согласен на обработку данных</label><br>
+      <button type="submit">Зарегистрироваться</button>
+    </form>
+    <form id="login-form" style="display:none;">
+      <input type="text" placeholder="Логин"><br>
+      <input type="password" placeholder="Пароль"><br>
+      <button type="submit">Войти</button>
+    </form>
+  </div>
+
+<img id="spacecat" src="{{ url_for('static', filename='cat_main.png') }}" alt="Космокот">
+
+   
+
+</body>
+</html>

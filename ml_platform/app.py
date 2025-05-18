@@ -29,7 +29,7 @@ chat = GigaChat(
 
 @app.route('/')
 def index():
-    return render_template("main.html")
+    return render_template("welcome.html")
 
 @app.route('/ask_ai', methods=['POST'])
 def ask_ai():

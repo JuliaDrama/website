@@ -153,30 +153,103 @@ body {
     border-bottom-left-radius: 4px;
   }
   
-  .spacecat-wrapper {
-    position: absolute;
-    top: -70px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 80px;
-    z-index: 10;
-    pointer-events: none;
-  }
-  
-  .spacecat {
-    width: 80px;
-    transition: transform 1s ease;
-    animation: floatCat 6s ease-in-out infinite;
-    transform-origin: center;
-  }
-  
-  .spacecat-wrapper:hover .spacecat {
-    transform: rotate(-4deg) translateY(-4px) scale(1.02);
-  }
-  
-  @keyframes floatCat {
-    0%   { transform: translateY(0); }
-    50%  { transform: translateY(-6px) rotate(-2deg); }
-    100% { transform: translateY(0); }
-  }
-  
+ 
+
+  body.welcome-page {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  background: linear-gradient(90deg, #a29ec8, #b1dcf7, #c4d3ed, #dcc0dd, #606180);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-family: sans-serif;
+  overflow: hidden;
+  position: relative;
+}
+
+.course-box {
+  background: white;
+  padding: 20px 30px;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  width: 300px;
+}
+
+.course-box h2 {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.module-title {
+  font-weight: bold;
+  margin: 8px 0;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+}
+
+.hidden-topics {
+  margin-left: 10px;
+  font-size: 14px;
+  display: none;
+  color: #333;
+}
+
+.auth-box {
+  background: white;
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  width: 260px;
+}
+
+.auth-box .tabs {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.auth-box .tab {
+  flex: 1;
+  padding: 8px;
+  cursor: pointer;
+  background: #eee;
+  border: none;
+  font-weight: bold;
+}
+
+.auth-box .tab.active {
+  background: #4b6cb7;
+  color: white;
+}
+
+.auth-box form input[type="text"],
+.auth-box form input[type="password"] {
+  width: 100%;
+  padding: 8px;
+  margin: 6px 0;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.auth-box form button {
+  width: 100%;
+  padding: 10px;
+  background: #4b6cb7;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+
+#spacecat {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100px;
+  transition: left 0.2s ease;
+  z-index: 1000;
+  pointer-events: none;
+}
