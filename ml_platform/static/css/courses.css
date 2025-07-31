@@ -1,0 +1,161 @@
+body {
+  background: linear-gradient(90deg, #dbeaff, #e8e0ff);
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+
+.courses-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.course-card {
+  background: white;
+  border-radius: 16px;
+  padding: 24px;
+  width: 320px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.course-card h2 {
+  margin-bottom: 10px;
+}
+
+.enter-button {
+  display: inline-block;
+  margin-top: 16px;
+  padding: 10px 20px;
+  background: linear-gradient(to right, #4e9af1, #9b4edb);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* Кнопка */
+.gradient-button {
+  padding: 10px 24px;
+  font-size: 15px;
+  font-weight: bold;
+  color: white;
+  background: linear-gradient(90deg, #4e9af1, #a55de7);
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  text-decoration: none;
+  box-shadow: 0 4px 8px rgba(80, 120, 200, 0.15);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.gradient-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(80, 120, 200, 0.25);
+}
+
+body {
+  background: linear-gradient(90deg, #dbeaff, #e8e0ff);
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Выравнивание обёртки */
+.course-list-wrapper {
+  max-width: 1200px;
+  margin: 60px auto 40px; /* ← верхний отступ увеличен до 120px */
+  padding: 20px 40px;
+}
+
+
+
+/* Заголовок влево */
+.course-list-title {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 24px;
+  color: #222;
+  text-align: left; /* ← ключ */
+}
+
+/* Сетка карточек */
+.courses-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  justify-content: start;
+}
+
+
+/* Карточка курса */
+.course-card {
+  background: white;
+  padding: 24px 20px;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 180px;
+  transition: transform 0.3s ease;
+}
+
+
+.course-card:hover {
+  transform: translateY(-6px);
+}
+
+/* Заголовок курса */
+.course-card h3 {
+  font-size: 20px;
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+/* Подзаголовок */
+.course-card p {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 18px;
+}
+
+.dev-label {
+  color: #888;
+  font-style: italic;
+  margin-bottom: 18px;
+}
+
+.disabled-button {
+  display: inline-block;
+  padding: 10px 24px;
+  font-size: 15px;
+  font-weight: bold;
+  color: white;
+  background: #bcbcbc;
+  border: none;
+  border-radius: 999px;
+  text-decoration: none;
+  cursor: default;
+  box-shadow: 0 4px 8px rgba(160, 160, 160, 0.2);
+  opacity: 0.8;
+}
+
+
+@media (max-width: 992px) {
+  .courses-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .courses-grid {
+    grid-template-columns: 1fr;
+  }
+}

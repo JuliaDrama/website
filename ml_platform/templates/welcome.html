@@ -3,11 +3,32 @@
 <head>
   <meta charset="UTF-8">
   <title>Добро пожаловать</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-  <script src="{{ url_for('static', filename='welcome.js') }}" defer></script>
+ <!-- <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"> -->
+
+ <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/welcome.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/header.css') }}">
+
+
+  <script src="{{ url_for('static', filename='js/welcome.js') }}" defer></script>
+
 
 </head>
+
+  
 <body class="welcome-page">
+
+  {% include 'partials/header.html' %}
+
+
+  <div class="page-content">
+    <div class="course-container">
+    <div class="animated-intro">
+  <div class="intro-top">Начни путь в машинное обучение »</div>
+  <div class="intro-bottom">
+    <span id="typed-text"></span><span class="cursor">|</span>
+  </div>
+</div>
 
   <div class="course-box">
     <h2>Программа курса</h2>
@@ -18,29 +39,75 @@
       <div class="hidden-topics">Нормализация<br>Выборки</div>
     </div>
   </div>
+  </div>
 
   <div class="auth-box">
+
     <div class="tabs">
       <button class="tab active" onclick="showForm('register')">Регистрация</button>
       <button class="tab" onclick="showForm('login')">Вход</button>
     </div>
-    <form id="register-form">
-      <input type="text" placeholder="Email"><br>
-      <input type="text" placeholder="Логин"><br>
-      <input type="password" placeholder="Пароль"><br>
-      <label><input type="checkbox"> Согласен на обработку данных</label><br>
-      <button type="submit">Зарегистрироваться</button>
-    </form>
-    <form id="login-form" style="display:none;">
-      <input type="text" placeholder="Логин"><br>
-      <input type="password" placeholder="Пароль"><br>
-      <button type="submit">Войти</button>
-    </form>
+
+<form id="register-form" method="POST" action="{{ url_for('register') }}">
+  <!-- Шаг 1 -->
+  <div id="step-1" class="step visible">
+    <input type="email" id="email" name="email" placeholder="Email" required><br>
+    <input type="text" id="login" name="login" placeholder="Логин" required><br>
+    <input type="password" id="password" name="password" placeholder="Пароль" required><br>
+
+    <!-- Стрелка вправо -->
+    <div class="row-with-arrow right">
+      <button type="button" id="next-arrow" class="arrow" disabled title="Далее">→</button>
+    </div>
   </div>
 
-<img id="spacecat" src="{{ url_for('static', filename='cat_main.png') }}" alt="Космокот">
+  <!-- Шаг 2 -->
+<div id="step-2" class="step">
+  <input type="password" id="repeat-password" placeholder="Повторите пароль" required><br>
+  <input type="text" id="surname" name="surname" placeholder="Фамилия" required><br>
+  <input type="text" id="name" name="name" placeholder="Имя" required><br>
+  <input type="text" id="patronymic" name="patronymic" placeholder="Отчество (необязательно)"><br>
+  <label><input type="checkbox" id="agree-final" required> Согласен на обработку персональных данных</label><br>
 
-   
+  <!-- Стрелка влево после чекбокса -->
+  <div class="row-with-arrow left">
+    <button type="button" id="back-arrow" class="arrow">←</button>
+  </div>
+</div>
 
+
+  <!-- Общая кнопка, всегда внизу -->
+  <button type="submit" id="final-submit" disabled class="register-button inactive">Зарегистрироваться</button>
+</form>
+
+
+
+
+
+
+<form id="login-form" method="POST" action="{{ url_for('login') }}" style="display:none;">
+  <input type="text" name="login" placeholder="Логин" required><br>
+  <input type="password" name="password" placeholder="Пароль" required><br>
+  <button type="submit" class="register-button inactive" id="login-button" disabled>Войти</button>
+
+
+</form>
+
+  </div>
+
+  
+<img id="spacecat" src="{{ url_for('static', filename='img/cat_main.png') }}" alt="Космокот">
+
+<div id="success-modal" class="modal">
+  <div class="rocket-container">
+    <img src="{{ url_for('static', filename='img/rocket_register.png') }}" class="rocket" alt="Космокот в ракете">
+    <img src="{{ url_for('static', filename='img/flame_register.png') }}" class="flame-img" alt="Огонь">
+  </div>
+</div>
+
+<button onclick="document.getElementById('success-modal').style.display = 'flex';">🧪 Тест анимации</button>
+
+
+</div>
 </body>
 </html>

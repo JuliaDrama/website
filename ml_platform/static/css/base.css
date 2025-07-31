@@ -1,0 +1,39 @@
+body {
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  width: 100%;
+  padding: 8px;
+  margin: 6px 0;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+  box-sizing: border-box;
+  font-family: inherit;
+}
+
+
+.register-button {
+  margin-top: 20px;
+  padding: 10px;
+  width: 100%;
+  font-weight: bold;
+  font-size: 15px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  background: #4b6cb7;
+  color: white;
+  transition: background 0.3s ease;
+}
+
+.register-button.inactive {
+  background: #999;
+  cursor: not-allowed;
+}

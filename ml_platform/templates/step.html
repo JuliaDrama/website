@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Этап {{ step_number }} — {{ step_title }}</title>
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+  <script src="{{ url_for('static', filename='js/script.js') }}" defer></script>
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/step.css') }}">
+
+  <!-- MathJax для формул -->
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']]
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+</head>
+
+
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll("[data-url]").forEach(btn => {
+      btn.addEventListener("click", () => {
+        window.location.href = btn.dataset.url;
+      });
+    });
+
+    const sidebar = document.querySelector('.course-outline');
+
+    sidebar.addEventListener('wheel', function (e) {
+      const isAtTop = sidebar.scrollTop === 0;
+      const isAtBottom = sidebar.scrollTop + sidebar.clientHeight === sidebar.scrollHeight;
+      const isScrollingUp = e.deltaY < 0;
+      const isScrollingDown = e.deltaY > 0;
+
+      if ((isAtTop && isScrollingUp) || (isAtBottom && isScrollingDown)) {
+        e.preventDefault(); // ⛔ остановим распространение скролла
+      }
+    }, { passive: false });
+  });
+</script>
+
+<body>
+
+<!-- Красивая фиксированная боковая панель -->
+<aside class="sidebar-fixed">
+  <div class="course-outline">
+    <div class="course-table">
+      {% for module in modules %}
+        {% set module_index = loop.index %}
+        <div class="module-row">
+          <div class="module-title">
+            {{ module_index }}. {{ module.title }}
+          </div>
+          {% for lesson in module.lessons %}
+            <a href="{{ url_for('show_step',
+                                course_id=course_id,
+                                module_id=module.id,
+                                lesson_id=lesson.id,
+                                step_id=lesson.stages[0].id) }}"
+               class="lesson-row {% if lesson.id == lesson_id %}active{% endif %}"
+               title="{{ lesson.title }}">
+              <span class="lesson-title">
+                {{ module_index }}.{{ loop.index }} {{ lesson.title }}
+              </span>
+            </a>
+          {% endfor %}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</aside>
+
+
+  <!-- Основной контент -->
+ <div class="content-wrapper">
+  <main class="content">
+
+    <!-- Панель навигации по этапам -->
+    <nav class="step-nav">
+      {% for s in steps %}
+        <button class="step-button {% if s.id == step_id %}active{% endif %}"
+                data-url="{{ url_for('show_step',
+                    course_id=course_id,
+                    module_id=module_id,
+                    lesson_id=lesson_id,
+                    step_id=s.id) }}">
+          {% if s.type_id == 1 %} 📘
+          {% elif s.type_id == 2 %} 🖊️
+          {% else %} 🔹
+          {% endif %}
+        </button>
+      {% endfor %}
+    </nav>
+
+    <!-- Контент текущего этапа -->
+    <article class="latex-content">
+      {{ latex_content | safe }}
+    </article>
+
+  </main>
+</div>
+  <!-- JS переходы -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      document.querySelectorAll("[data-url]").forEach(btn => {
+        btn.addEventListener("click", () => {
+          window.location.href = btn.dataset.url;
+        });
+      });
+    });
+  </script>
+  
+
+
+
+<!-- Кнопка "Спросить у ИИ" -->
+<div id="ask-button">Объясни! <span class="beta-tag">BETA</span></div>
+
+<!-- Контейнер чата -->
+<div class="chat-container">
+  <div id="chat-popup">
+
+    <!-- Космокот -->
+    <div class="spacecat-wrapper_main">
+      <img src="{{ url_for('static', filename='img/cat.png') }}" alt="Космокот" class="spacecat_main" />
+    </div>
+
+    <div class="chat-header">
+      <strong>Космокот</strong>
+      <button id="close-chat">✕</button>
+    </div>
+
+    <div class="chat-messages" id="chat-messages"></div>
+
+    <input id="chat-input" type="text" placeholder="Задай свой вопрос..." />
+    <button id="send-button" class="explain-button">Объясни иначе</button>
+  </div>
+</div>
+
+
+</body>
+</html>

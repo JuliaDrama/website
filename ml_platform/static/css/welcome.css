@@ -1,0 +1,302 @@
+body.welcome-page {
+  min-height: 100vh;
+  background: linear-gradient(90deg, #a29ec8, #b1dcf7, #c4d3ed, #dcc0dd, #606180);
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column; /* ← добавляем */
+}
+
+.page-content {
+  margin-top: 100px;  /* ← подстрой под высоту твоего хедера */
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-grow: 1;
+  padding: 20px;
+}
+
+
+.course-box {
+  background: white;
+  padding: 20px 30px;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  width: 300px;
+}
+
+.course-box h2 {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.module-title {
+  font-weight: bold;
+  margin: 8px 0;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+}
+
+.hidden-topics {
+  margin-left: 10px;
+  font-size: 14px;
+  display: none;
+  color: #333;
+}
+
+.auth-box {
+  background: white;
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  width: 260px;
+}
+
+.auth-box .tabs {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.auth-box .tab {
+  flex: 1;
+  padding: 8px;
+  cursor: pointer;
+  background: #eee;
+  border: none;
+  font-weight: bold;
+}
+
+.auth-box .tab.active {
+  background: #4b6cb7;
+  color: white;
+}
+
+.auth-box form button:not(.arrow) {
+  margin-top: 10px;
+  width: 100%;
+}
+
+
+.step {
+  display: none;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.step.visible {
+  display: block;
+  opacity: 1;
+}
+
+.arrow {
+  background: #4e9af1;
+  color: white;
+  border: none;
+  font-size: 16px;
+  padding: 4px;
+  border-radius: 6px;
+  cursor: pointer;
+  opacity: 0.4;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  height: 28px;
+  width: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.arrow:disabled {
+  opacity: 0.2;
+  
+  cursor: default;
+  
+}
+.arrow.enabled {
+  opacity: 1;
+  transform: scale(1);
+}
+
+
+.row-with-arrow input {
+  flex: 1;
+}
+.row-with-arrow {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.row-with-arrow.right {
+  justify-content: flex-end;
+}
+
+.row-with-arrow.left {
+  justify-content: flex-start;
+}
+
+.register-button {
+  background: #4b6cb7;
+  color: white;
+  border: none;
+  font-weight: bold;
+  border-radius: 8px;
+  padding: 10px;
+  font-size: 15px;
+  width: 100%;
+  transition: background 0.3s ease;
+  cursor: pointer;
+}
+
+.register-button.inactive {
+  background: #a8c3f0;  /* светло-синий, как бы "заблокированная" версия */
+  color: white;
+  cursor: not-allowed;
+}
+
+
+
+#spacecat {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100px;
+  transition: left 0.2s ease;
+  z-index: 1000;
+  pointer-events: none;
+}
+
+#back-arrow {
+  opacity: 1 !important;
+  cursor: pointer !important;
+}
+
+
+
+.spacecat-wrapper_main {
+position: absolute;
+top: -70px;
+left: 50%;
+transform: translateX(-50%);
+width: 80px;
+z-index: 10;
+pointer-events: none;
+}
+
+.spacecat_main {
+width: 80px;
+transition: transform 1s ease;
+animation: floatCat 6s ease-in-out infinite;
+transform-origin: center;
+}
+
+.spacecat-wrapper_main:hover .spacecat_main {
+transform: rotate(-4deg) translateY(-4px) scale(1.02);
+}
+
+@keyframes floatCat {
+0%   { transform: translateY(0); }
+50%  { transform: translateY(-6px) rotate(-2deg); }
+100% { transform: translateY(0); }
+}
+
+/* Центрированная модалка */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(40, 42, 54, 0.85);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+.rocket-container {
+  position: relative;
+  width: 140px; /* оставить как есть, или адаптировать под твою ракету */
+  animation: launch 1.2s ease-out forwards;
+}
+
+.rocket {
+  width: 100%;
+  display: block;
+  position: relative;
+  z-index: 2; /* 🚀 ракета поверх */
+}
+
+.flame-img {
+  position: absolute;
+  bottom: -40px;         /* подгоняй — это вертикальное положение */
+  left: 51.5%;             /* сместим огонь немного вправо */
+  transform: translateX(-50%);
+  width: 94px;           /* подгони под основание ракеты */
+  height: auto;
+  z-index: 1;            /* 🔥 под ракетой */
+  animation: flame-flicker 0.2s infinite alternate;
+  transform-origin: top center;
+}
+
+
+/* Анимация огня */
+@keyframes flame-flicker {
+  0%   { transform: translateX(-50%) scaleY(0.85); opacity: 0.8; }
+  100% { transform: translateX(-50%) scaleY(1.15); opacity: 1; }
+}
+
+/* Анимация взлёта */
+@keyframes launch {
+  0%   { transform: translateY(0); opacity: 0; }
+  100% { transform: translateY(-200px); opacity: 1; }
+}
+
+.course-container {
+  position: relative;
+  display: inline-block; /* или width: fit-content; */
+}
+
+.animated-intro {
+  position: absolute;
+  top: -160px;              /* ← поднимает текст над курсом */
+  left: 0;
+  z-index: 10;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 28px;
+  color: #2b2b2b;
+  white-space: nowrap;     /* ← вся строка в одну линию */
+  line-height: 1.2;
+}
+
+#typed-text {
+  color: #6a94ff;          /* ← синий акцент */
+}
+.intro-top {
+  font-weight: 600;
+  font-size: 28px;
+  color: #2b2b2b;
+  margin-bottom: 4px;
+}
+
+.intro-bottom {
+  font-weight: 600;
+  font-size: 28px;
+  color: #6a94ff; /* ✨ яркий акцент — можешь взять #6a94ff, #78a8ff, или свой */
+}
+
+.cursor {
+  display: inline-block;
+  animation: blink 1s steps(2, start) infinite;
+  font-weight: bold;
+  color: inherit;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+

@@ -1,0 +1,81 @@
+/* Хедер */
+header {
+  position: fixed;
+  top: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 92%;
+  max-width: 1300px;
+  background: #2a2c38;
+  border-radius: 48px;
+  padding: 16px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  height: 56px; /* ← зафиксируй высоту полосы */
+  box-sizing: border-box;
+  overflow: hidden; /* не даёт вылезать */
+}
+
+/* Контейнер логотипа */
+.logo {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  position: relative;
+  z-index: 1001; 
+}
+
+/* Логотип-картинка */
+.logo img {
+  height: 95px;           /* ← нормальный размер логотипа */
+  object-fit: contain;
+  display: block;
+  transition: transform 0.3s ease;
+  margin-left: -22px;   /* ← сдвинет логотип чуть левее */
+  margin-top: 4px;     /* ← сдвинет чуть ниже */
+}
+
+/* Увеличение при наведении */
+.logo img:hover {
+  transform: scale(1.1);
+}
+/* Контейнер внутри хедера */
+.header-inner {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+
+/* Навигационные ссылки */
+.nav-links a {
+  margin: 0 16px;
+  text-decoration: none;
+  color: #f0f0f0;
+  font-weight: 500;
+  transition: opacity 0.25s;
+}
+
+.nav-links a:hover {
+  opacity: 0.7;
+}
+
+/* Кнопки справа */
+.user-actions a.btn-secondary {
+  background: #2c2e3f;
+  padding: 10px 20px;
+  border-radius: 32px;
+  color: #f5f5f5;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background 0.3s ease;
+  margin-left: 12px;
+}
+
+.user-actions a.btn-secondary:hover {
+  background: #3d3f51;
+}

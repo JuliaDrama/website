@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Все курсы</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/courses.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/header.css') }}">
+
+</head>
+<body>
+
+{% include 'partials/header.html' %}
+
+
+<div class="course-list-wrapper">
+  <h2 class="course-list-title">Доступные курсы</h2>
+
+<div class="courses-grid">
+  {% for course in courses %}
+    <div class="course-card">
+  <h3>{{ course.title }}</h3>
+
+  {% if course.module_count > 0 %}
+    <p>Курс из {{ course.module_count }} модулей</p>
+  {% else %}
+    <p class="dev-label">Курс в разработке</p>
+  {% endif %}
+
+  {% if course.is_published %}
+    <a href="{{ url_for('show_step', course_id=course.id, module_id=1, lesson_id=1, step_id=1) }}"
+       class="gradient-button">
+      Начать
+    </a>
+  {% else %}
+    <span class="disabled-button">Скоро</span>
+  {% endif %}
+</div>
+  {% endfor %}
+</div>
+
+
+
+    <!-- Пример дополнительных курсов -->
+    <!--
+    <div class="course-card">
+      <h3>Python для начинающих</h3>
+      <p>Курс из 5 модулей</p>
+      <a href="#" class="gradient-button">Начать</a>
+    </div>
+    -->
+
+  </div>
+</div>
+
+</body>
+
+</html>

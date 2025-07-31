@@ -253,3 +253,121 @@ body {
   z-index: 1000;
   pointer-events: none;
 }
+
+  .spacecat-wrapper_main  {
+    position: fixed;
+    bottom: 220px;
+    right: 40px;
+    width: 100px;
+    z-index: 998;
+    pointer-events: none;
+  }
+  
+  .spacecat_main {
+    width: 100px;
+    transition: transform 1s ease;
+    animation: floatCat 6s ease-in-out infinite;
+    transform-origin: center;
+  }
+  
+  .spacecat-wrapper_main:hover .spacecat_main {
+    transform: rotate(-4deg) translateY(-4px) scale(1.02);
+  }
+  
+  @keyframes floatCat {
+    0%   { transform: translateY(0); }
+    50%  { transform: translateY(-6px) rotate(-2deg); }
+    100% { transform: translateY(0); }
+  }
+
+  button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+
+.step {
+  display: none;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.step.visible {
+  display: block;
+  opacity: 1;
+}
+
+.arrow {
+  background: #4e9af1;
+  color: white;
+  border: none;
+  font-size: 14px;
+  border-radius: 6px;
+  padding: 6px 10px;
+  cursor: pointer;
+  opacity: 0.4;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  transform: scale(0.85);
+  width: auto;        /* ❗️это ключевое */
+  display: inline-block;
+}
+
+.arrow:disabled {
+  opacity: 0.2;
+  cursor: default;
+}
+
+.arrow.enabled {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.nav-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 6px;
+}
+
+.spacer {
+  flex: 1;
+}
+
+.arrow-box {
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 10px;
+}
+
+.register-button {
+  margin-top: 20px;
+  padding: 10px;
+  width: 100%;
+  font-weight: bold;
+  font-size: 15px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  background: #4b6cb7;
+  color: white;
+  transition: background 0.3s ease;
+}
+
+.register-button.inactive {
+  background: #999;
+  cursor: not-allowed;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  width: 100%;
+  padding: 8px;
+  margin: 6px 0;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+  box-sizing: border-box;
+  font-family: inherit;
+}

@@ -3,11 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <title>Курс по Машинному обучению</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-  <script src="{{ url_for('static', filename='script.js') }}" defer></script>
+  <!-- <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"> -->
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+
+  <script src="{{ url_for('static', filename='js/script.js') }}" defer></script>
+
 </head>
 <body>
-
+  <h1>Добро пожаловать, {{ user_name }}!</h1>  <!-- Отображаем имя пользователя -->
   <h1>Курс: Основы машинного обучения</h1>
 
   <div class="module">
@@ -36,8 +41,9 @@
     <div id="chat-popup">
 
       <!-- КОСМОКОТ ВНУТРИ ЧАТА -->
-      <div class="spacecat-wrapper">
-        <img src="{{ url_for('static', filename='cat.png') }}" alt="Космокот" class="spacecat" />
+      <div class="spacecat-wrapper_main">
+        <img src="{{ url_for('static', filename='img/cat.png') }}" alt="Космокот" class="spacecat_main" />
+
       </div>
 
       <div class="chat-header">

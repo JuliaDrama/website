@@ -92,5 +92,19 @@ function toggleTopics(id) {
   closeButton.addEventListener('click', function () {
     chatPopup.style.display = 'none';
   });
+
+const chat = document.getElementById('chat-popup');
+const cat = chat.querySelector('.spacecat-wrapper_main');
+
+const observer = new ResizeObserver(entries => {
+  for (const entry of entries) {
+    const height = entry.contentRect.height;
+    cat.style.top = `${-Math.min(50 + (height - 340) * 0.3, 120)}px`; 
+    // максимум поднимаем до -120px, регулируй по вкусу
+  }
+});
+
+observer.observe(chat);
+
   
 
